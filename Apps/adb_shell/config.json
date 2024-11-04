@@ -1,0 +1,7 @@
+{
+"label":"ADB shell",
+"icon":"",
+"icontop":"usb_icon.png",
+"launch":"launch.sh",
+"description":"TRIMUI SmartPro ADB Mode"
+}
