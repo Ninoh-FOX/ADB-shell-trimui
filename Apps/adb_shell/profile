@@ -1,4 +1,10 @@
 #!/bin/sh
+
+SDCARD_BIN="/mnt/trimui/bin"
+SDCARD_LIB="/mnt/trimui/lib"
+TRIMUI_BIN="/usr/trimui/bin"
+TRIMUI_LIB="/usr/trimui/lib"
+
 [ -f /etc/banner ] && cat /etc/banner
 [ -e /tmp/.failsafe ] && cat /etc/banner.failsafe
 fgrep -sq '/ overlay ro,' /proc/mounts && {
@@ -6,8 +12,18 @@ fgrep -sq '/ overlay ro,' /proc/mounts && {
 	echo 'Please try to remove files from /overlay/upper/... and reboot!'
 }
 
-export PATH="/usr/trimui/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export LD_LIBRARY_PATH="/usr/trimui/lib:$LD_LIBRARY_PATH"
+if [ -d $SDCARD_BIN ]; then
+export PATH="$SDCARD_BIN:$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
+else
+export PATH="$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
+fi
+
+if [ -d $SDCARD_LIB ]; then
+export LD_LIBRARY_PATH="$SDCARD_LIB:$TRIMUI_LIB:$LD_LIBRARY_PATH"
+else
+export LD_LIBRARY_PATH="$TRIMUI_LIB:$LD_LIBRARY_PATH"
+fi
+
 export HOME=$(grep -e "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)
 export HOME=${HOME:-/root}
 export PS1='\u@\h:\w\$ '
