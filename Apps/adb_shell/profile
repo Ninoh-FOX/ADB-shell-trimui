@@ -1,7 +1,7 @@
 #!/bin/sh
 
-SDCARD_BIN="/mnt/trimui/bin"
-SDCARD_LIB="/mnt/trimui/lib"
+SDCARD_BIN="/mnt/SDCARD/trimui/bin"
+SDCARD_LIB="/mnt/SDCARD/trimui/lib"
 TRIMUI_BIN="/usr/trimui/bin"
 TRIMUI_LIB="/usr/trimui/lib"
 
