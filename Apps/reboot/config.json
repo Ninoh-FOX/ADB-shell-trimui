@@ -1,0 +1,7 @@
+{
+"label":"Reboot",
+"icon":"",
+"icontop":"icon.png",
+"launch":"launch.sh",
+"description":"Reboot the console"
+}
