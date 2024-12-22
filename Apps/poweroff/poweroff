@@ -34,6 +34,6 @@ swapoff -a
 umount /etc/profile
 umount -l /mnt/SDCARD
 
-# Shutdow the system
-echo "Shutdowing the system..."
+# Shutdown the system
+echo "Shutdowning the system..."
 poweroff
