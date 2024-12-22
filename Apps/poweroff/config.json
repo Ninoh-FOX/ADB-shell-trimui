@@ -1,0 +1,7 @@
+{
+"label":"Poweroff",
+"icon":"",
+"icontop":"icon.png",
+"launch":"launch.sh",
+"description":"Poweroff the console"
+}
