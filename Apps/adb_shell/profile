@@ -19,9 +19,9 @@ export PATH="/tmp/sbin:$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
 fi
 
 if [ -d $SDCARD_LIB ]; then
-export LD_LIBRARY_PATH="$SDCARD_LIB:$TRIMUI_LIB:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$SDCARD_LIB:$TRIMUI_LIB:/urs/lib:/lib"
 else
-export LD_LIBRARY_PATH="$TRIMUI_LIB:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$TRIMUI_LIB:/urs/lib:/lib"
 fi
 
 export HOME=$(grep -e "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)

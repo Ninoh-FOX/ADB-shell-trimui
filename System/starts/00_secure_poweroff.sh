@@ -10,7 +10,14 @@ POWEROFF_BIN="/mnt/SDCARD/Apps/poweroff/poweroff"
 mkdir /tmp/sbin
 cp -f "$POWEROFF_BIN" /tmp/sbin/poweroff
 chmod +x /tmp/sbin/poweroff
-export PATH="/tmp/sbin:${PATH}"
+
+SDCARD_BIN="/mnt/SDCARD/trimui/bin"
+SDCARD_LIB="/mnt/SDCARD/trimui/lib"
+TRIMUI_BIN="/usr/trimui/bin"
+TRIMUI_LIB="/usr/trimui/lib"
+
+export PATH="/tmp/sbin:$SDCARD_BIN:$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
+export LD_LIBRARY_PATH="$SDCARD_LIB:$TRIMUI_LIB:/urs/lib:/lib"
 
 
 if [ -e "$LOCKFILE" ]; then
