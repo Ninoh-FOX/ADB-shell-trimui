@@ -7,6 +7,12 @@ BATT_STATUS="/sys/class/power_supply/axp2202-battery/status"
 LED_PATH="/sys/class/led_anim"
 POWEROFF_BIN="/mnt/SDCARD/Apps/poweroff/poweroff"
 
+mkdir /tmp/sbin
+cp -f "$POWEROFF_BIN" /tmp/sbin/poweroff
+chmod +x /tmp/sbin/poweroff
+export PATH="/tmp/sbin:${PATH}"
+
+
 if [ -e "$LOCKFILE" ]; then
     echo "El script ya está en ejecución."
     exit 1
@@ -27,16 +33,18 @@ turn_on_leds() {
     echo "30000" > "$LED_PATH/effect_cycles_f2"
     echo "2000" > "$LED_PATH/effect_duration_f2"
     echo "6" > "$LED_PATH/effect_f2"
-    echo "FF0000" > "$LED_PATH/effect_rgb_hex_m"
+	echo "FF0000" > "$LED_PATH/effect_rgb_hex_m"
     echo "30000" > "$LED_PATH/effect_cycles_m"
     echo "2000" > "$LED_PATH/effect_duration_m"
     echo "6" > "$LED_PATH/effect_m"
 }
 
 custom_poweroff() {
-    cp -f "$POWEROFF_BIN" /tmp/poweroff
+    cp -f /mnt/SDCARD/Apps/poweroff/poweroff.png /tmp/poweroff.png
+	cp -f /mnt/SDCARD/trimui/bin/show /tmp/show
+	chmod +x /tmp/show
     set -m
-    /tmp/poweroff
+    /tmp/sbin/poweroff
 }
 
 (

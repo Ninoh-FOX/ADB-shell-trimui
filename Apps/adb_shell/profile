@@ -13,9 +13,9 @@ fgrep -sq '/ overlay ro,' /proc/mounts && {
 }
 
 if [ -d $SDCARD_BIN ]; then
-export PATH="$SDCARD_BIN:$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/tmp/sbin:$SDCARD_BIN:$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
 else
-export PATH="$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/tmp/sbin:$TRIMUI_BIN:/usr/sbin:/usr/bin:/sbin:/bin"
 fi
 
 if [ -d $SDCARD_LIB ]; then

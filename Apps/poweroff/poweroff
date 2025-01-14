@@ -29,11 +29,17 @@ kill_all_processes
 # Synchronize data with storage to minimize data corruption risks
 sync
 
+/tmp/show /tmp/poweroff.png &
+
+echo 1 > /sys/class/gpio/gpio227/value
+sleep 0.1
+echo 0 > /sys/class/gpio/gpio227/value
+
 # Unmount sdcard
 swapoff -a
-umount /etc/profile
+umount -f /etc/profile
 umount -l /mnt/SDCARD
 
 # Shutdown the system
 echo "Shutdowning the system..."
-poweroff
+busybox poweroff

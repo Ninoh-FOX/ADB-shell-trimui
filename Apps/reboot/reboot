@@ -29,11 +29,17 @@ kill_all_processes
 # Synchronize data with storage to minimize data corruption risks
 sync
 
+/tmp/show /tmp/reboot.png &
+
+echo 1 > /sys/class/gpio/gpio227/value
+sleep 0.1
+echo 0 > /sys/class/gpio/gpio227/value
+
 # Unmount sdcard
 swapoff -a
-umount /etc/profile
+umount -f /etc/profile
 umount -l /mnt/SDCARD
 
 # Reboot the system
 echo "Rebooting the system..."
-reboot
+busybox reboot
