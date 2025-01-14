@@ -1,5 +1,6 @@
 #!/bin/sh
 
+touch /tmp/poweroff_flag
 cp -f /mnt/SDCARD/Apps/reboot/reboot /tmp/reboot
 cp -f /mnt/SDCARD/Apps/reboot/reboot.png /tmp/reboot.png
 cp -f /mnt/SDCARD/trimui/bin/show /tmp/show
